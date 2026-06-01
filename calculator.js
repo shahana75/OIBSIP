@@ -1,9 +1,6 @@
 const display = document.getElementById("display");
-
-// Get all buttons
 const buttons = document.querySelectorAll("button");
 
-// Loop through buttons → add event listeners
 buttons.forEach(button => {
     button.addEventListener("click", () => {
         const value = button.innerText;
@@ -20,20 +17,18 @@ buttons.forEach(button => {
     });
 });
 
-// Add value to display
+
 function appendValue(value) {
     display.value += value;
 }
 
-// Clear display
 function clearDisplay() {
     display.value = "";
 }
 
-// Calculate result
 function calculate() {
     try {
-        // Basic safety check using if condition
+        
         if (display.value === "") {
             display.value = "Error";
         } else {
