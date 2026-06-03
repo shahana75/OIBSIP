@@ -1,0 +1,131 @@
+<div class="container">
+<h2 class="title">Calculator</h2>
+  <div class="calculator">
+    <input type="text" id="display" readonly>
+
+    <div class="buttons">
+    
+      <button>C</button> 
+      <button>7</button>
+      <button>8</button>
+      <button>9</button>
+
+   
+      <button>/</button>
+      <button>4</button>
+      <button>5</button>
+      <button>6</button>
+
+
+      <button>*</button>
+      <button>1</button>
+      <button>2</button>
+      <button>3</button>
+
+    
+      <button>-</button>
+      <button>+</button>
+      <button>0</button>
+      <button>=</button>
+    </div>
+  </div>
+</div>
+
+<script src="calculator.js"></script>
+
+<style></style>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display&display=swap" rel="stylesheet">
+  
+  
+<style>
+
+.title {
+  width: 100%;
+  text-align: left;  
+  color: white;
+  margin-bottom: 10px;
+  font-size: 20px;
+}
+
+.calculator {
+  padding: 20px;
+  border-radius: 15px;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.3);
+  width: 240px;
+  background: linear-gradient(to right, #4749b5, #3d2a95);
+}
+
+
+#display {
+  width: 98%;
+  height: 50px;
+  margin-bottom: 15px;
+  margin-right: 20px;
+  margin-left: 0px;
+  border-radius: 8px;
+  border: none;
+  padding: 10px;
+  font-size: 18px;
+}
+
+button {
+  display: flex;             
+  justify-content: center;    
+  align-items: center;  
+  font-family: 'Playfair Display', serif;
+  font-size: medium;
+  padding: 15px;
+  width: 40px;
+  height: 40px;
+  margin: 2px;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  justify-content: center;
+  background: #c0c0e6;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.3);
+
+}
+
+input[type="text"] {
+      font-family: 'Playfair Display', serif;
+      background: #d9dbee;
+      letter-spacing: 1px;
+      width: calc(100% - 12px);
+      max-width: 300px;
+      padding: 10px;
+      margin-right: 8px;
+      margin-left: 6px;
+      border-radius: 6px;
+      border: none;
+      cursor: text;
+      box-shadow: 0 6px 10px rgba(0,0,0,0.1);
+      box-sizing: border-box;
+      width: 200px;
+    }
+
+.calculator{
+    margin: auto;
+}
+
+.buttons { 
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 10px;
+  justify-content: center;
+}
+
+ body {
+      font-family: 'Playfair Display', serif;
+      letter-spacing: 1px;
+      background: linear-gradient(to right, #332886, #150362);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+      margin: 0;
+    }
+
+</style>
+
+
