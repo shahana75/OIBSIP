@@ -70,12 +70,6 @@ Basic login system with validation.
 
 ---
 
-## GitHub Repository
-
-(Add your repo link here)
-
----
-
 ## Author
 
 *Shahana G S*
