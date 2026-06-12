@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Login - SHAZAM</title>
+
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display&display=swap" rel="stylesheet">
+  
+<style>
+
+    header {
+      background-color: #040c1b;
+      font-family: 'Playfair Display', serif;
+      text-align: center;
+      box-sizing: border-box;
+      padding: 24px;
+      width: 100%;
+      letter-spacing: 1px;
+      font-size: xx-large;
+    }
+
+    footer {
+      background-color: #040c1b;
+      font-family: 'Playfair Display', serif;
+      text-align: center;
+      box-sizing: border-box;
+      padding: 24px;
+      width: 100%;
+      letter-spacing: 1px;
+      font-size: small;
+      margin-top: 990px;
+    }
+
+    body {
+      background: radial-gradient(circle, #051120, #061225);
+      font-family: 'Playfair Display', serif;
+      letter-spacing: 1px;
+      color: aliceblue;
+      height: 1000px;
+      align-items: center;
+      margin: 0%;
+    }
+
+    .content {
+      color: aliceblue;
+      font-family: 'Playfair Display', serif;
+      letter-spacing: 1px;
+      text-align: center;
+      margin-top: 30px;
+      margin-bottom: 30px;
+      font-size: larger;
+    }
+
+    .container {
+      background: linear-gradient(to right, #0b203a, #0b2245);
+      font-family: 'Playfair Display', serif;
+      letter-spacing: 1px;
+      width: 450px;
+      border-radius: 12px;
+      place-items: center;
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.4);
+      margin-left: 405px;
+      margin-top: 50px;
+      padding-top: 20px;
+      height: fit-content;
+    }
+
+    input[type="text"],
+    input[type="password"] {
+      font-family: 'Playfair Display', serif;
+      background: #cde3fe;
+      letter-spacing: 1px;
+      padding: 10px;
+      border-radius: 6px;
+      border: none;
+      cursor: text;
+      box-shadow: 0 6px 10px rgba(0, 0, 0, 0.1);
+      box-sizing: border-box;
+      width: 400px;
+      margin-left: 25px;
+      margin-top: 30px;
+    }
+
+    button[type="submit"] {
+      font-family: 'Playfair Display', serif;
+      background: #061124;
+      letter-spacing: 1px;
+      padding: 10px;
+      border-radius: 6px;
+      border: none;
+      box-shadow: 0 6px 10px rgba(0, 0, 0, 0.1);
+      box-sizing: border-box;
+      padding: 10px 15px;
+      background-color: #091428;
+      cursor: pointer;
+      color: #e2e8f0;
+      margin-left: 185px;
+      margin-top: 30px;
+      margin-bottom: 20px;
+    }
+
+    button:hover {
+      background-color: #040915;
+    }
+
+    .error {
+      color: #ff8a8a;
+      text-align: center;
+      margin-top: 15px;
+      min-height: 20px;
+      font-size: 14px;
+    }
+
+</style>
+
+</head>
+<body>
+  <header>SHAZAM</header>
+
+  <div class="content">
+    LOG-IN Into Your Account To Get Started!
+  </div>
+
+  <div class="container">
+    <h3>Enter Your Name and PassWord</h3>
+    <input type="text" id="nameInput" placeholder="Enter your name">
+    <input type="password" id="passwordInput" placeholder="Password">
+    <button type="submit" id="submit" class="submit">submit</button>
+    <p id="errorMsg" class="error"></p>
+  </div>
+
+  <footer>created by Shahana</footer>
+
+  <script>
+    const nameInput = document.getElementById("nameInput");
+    const passwordInput = document.getElementById("passwordInput");
+    const submitBtn = document.getElementById("submit");
+    const errorMsg = document.getElementById("errorMsg");
+
+    async function handleLogin() {
+      errorMsg.textContent = "";
+      const username = nameInput.value.trim();
+      const password = passwordInput.value;
+
+      if (!username || !password) {
+        errorMsg.textContent = "Please enter your name and password.";
+        return;
+      }
+
+      submitBtn.disabled = true;
+
+      try {
+        const response = await fetch("/api/login", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ username, password })
+        });
+
+        const data = await response.json();
+
+        if (response.ok) {
+          window.location.href = data.redirect;
+        } else {
+          errorMsg.textContent = data.error || "Login failed.";
+        }
+      } catch (err) {
+        errorMsg.textContent = "Could not reach the server.";
+      } finally {
+        submitBtn.disabled = false;
+      }
+    }
+
+    submitBtn.addEventListener("click", handleLogin);
+    passwordInput.addEventListener("keydown", (e) => {
+      if (e.key === "Enter") handleLogin();
+    });
+  </script>
+</body>
+</html>

@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>{{ username }} - SHAZAM</title>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display&display=swap" rel="stylesheet">
+
+<style>
+  * { box-sizing: border-box; margin: 0; }
+
+body 
+{
+    background: radial-gradient(circle, #051120, #061225);
+    font-family: 'Playfair Display', serif;
+    letter-spacing: 1px;
+    color: aliceblue;
+    min-height: 100vh;
+}
+
+header 
+{
+    background-color: #040c1b;
+    text-align: center;
+    padding: 24px;
+    font-size: xx-large;
+}
+
+.welcome 
+{
+    text-align: center;
+    margin: 30px 0;
+    font-size: larger;
+}
+
+.task_container h3, 
+.incom_container h3, 
+.com_container h3
+{
+    margin: 0; 
+    font-weight: bold;
+    color: #ffffff; 
+    font-family: 'Playfair Display', serif; 
+    margin-bottom: 10px;
+    letter-spacing: 1px;
+    margin-left: 148px;
+    margin-top: 10px;
+}
+
+input[type="text"] 
+{
+    font-family: 'Playfair Display', serif; 
+    background: #e2eefd;
+    letter-spacing: 1px;
+    padding: 10px;
+    margin-left: 30px;
+    border-radius: 6px;
+    border: none;
+    cursor: text;
+    box-shadow: 0 6px 10px rgba(0,0,0,0.1);
+    box-sizing: border-box;
+    width: 400px;
+    margin-top:25px;
+
+}
+
+.main-layout 
+{ 
+    display: flex;
+    align-items: flex-start;
+    gap: 70px; 
+    padding: 50px 60px; 
+    color: aliceblue;
+}
+
+.right-column 
+{
+    display: flex;
+    flex-direction: column;
+    gap: 30px; 
+}
+
+.task_container
+{
+    padding: 20px;
+    border-radius: 15px;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.4);
+    width: 500px;
+    flex-shrink: 0;
+    background: linear-gradient(to right, #0b203a, #0b2245);
+    color: #2b2d30;
+    line-height: 1.7;
+    height: 300px;
+    margin-top: 100px;
+    margin-left: 70px;
+}
+
+button[type="button"] 
+{
+    font-family: 'Playfair Display', serif; 
+    background: #061124;
+    letter-spacing: 1px;
+    padding: 10px;
+    margin-right: 8px;
+    margin-left: 193px;
+    margin-top: 40px;
+    border-radius: 6px;
+    border: none;
+    cursor: text;
+    box-shadow: 0 6px 10px rgba(0,0,0,0.1);
+    box-sizing: border-box;
+    padding: 10px 15px;
+    background-color: #091428;
+    cursor: pointer;
+    color: #e2e8f0;
+}
+
+.incom_container
+{
+    padding: 20px;
+    border-radius: 15px;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.4);
+    width: 450px;
+    flex-shrink: 0;
+    background: linear-gradient(to right, #0b203a, #0b2245);
+    color: #2b2d30;
+    line-height: 1.7;
+    height: fit-content;
+    margin-top: 100px;
+}
+
+.com_container
+{
+    padding: 20px;
+    border-radius: 15px;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.4);
+    width: 450px;
+    flex-shrink: 0;
+    background: linear-gradient(to right, #0b203a, #0b2245);
+    color: #2b2d30;
+    line-height: 1.7;
+    height: fit-content;
+    margin-top: 70px;
+}
+
+button:hover 
+{
+    background-color: #0c1b42;
+}
+
+ul 
+{
+    list-style-type: none;
+    padding-left: 0;
+}
+
+.task-item 
+{
+    background: #e2eefd;
+    padding: 10px;
+    margin-top: 5px;
+    border-left: 6px solid #0e1c32; 
+    border-radius: 6px;
+    height: 35px;
+}
+
+.delete-btn:hover 
+{
+    background: #e2eefd;
+}
+
+li 
+{
+    display: flex;
+    align-items: center;
+    gap: 12px; 
+}
+
+li button, li .delete-btn, li :last-child 
+{
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 4px;
+    margin-left: auto; 
+}
+
+input[type="checkbox"] 
+{
+    accent-color: #00bcd4; 
+    transform: scale(1.2);
+    cursor: pointer;
+}
+
+.logout-btn 
+{
+    display: block;
+    margin: 0 auto 40px;
+    padding: 10px 20px;
+    background-color: #040810;
+    color: #e2e8f0;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    font-family: 'Playfair Display', serif;
+    letter-spacing: 1px;
+}
+
+.logout-btn:hover 
+{
+    background-color: #040915;
+}
+
+footer 
+{
+    background-color: #040c1b;
+    text-align: center;
+    padding: 24px;
+    font-size: small;
+    margin-top: 500px;
+    flex-shrink: 0;
+}
+
+  </style>
+
+
+</head>
+<body>
+  <header>SHAZAM</header>
+
+  <p class="welcome">Welcome, {{ username }}</p>
+
+  <div class="main-layout">
+   
+    <div class="task_container">
+     <h3>Enter your tasks</h3>
+     <input type="text" id="taskInput" placeholder="Enter task - discription">
+     <button type="button" id="addBt" class="add">Add</button>
+    </div>
+
+    <div class="right-column">
+
+        <div class="incom_container">
+            <h3>Incomplete tasks</h3>
+            <ul id="incompleteTasks"></ul>
+        </div>
+        
+        <div class="com_container">
+            <h3>Completed tasks</h3>
+            <ul id="completedTasks"></ul>
+        </div>
+          
+    </div>
+</div>
+
+<script src="{{ url_for('static', filename='notes.js') }}"></script>
+
+  <form action="/logout" method="post">
+    <button type="submit" class="logout-btn">Log out</button>
+  </form>
+
+  <footer>created by Shahana</footer>
+</body>
+</html>
